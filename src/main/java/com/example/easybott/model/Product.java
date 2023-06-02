@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "products")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "product_type")
-public abstract class Product {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +20,9 @@ public abstract class Product {
     private int quantity;
     private String type;
 
+    public Product() {
+
+    }
 
     public Product(Long id, String serialNumber, String manufacturer, double price, int quantity) {
         this.id = id;
@@ -29,9 +32,6 @@ public abstract class Product {
         this.quantity = quantity;
     }
 
-    public Product() {
-
-    }
 
     public String getId() {
         return String.valueOf(id);
